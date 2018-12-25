@@ -19,41 +19,13 @@ public class TenKindsOfPeopleFileRead {
     private int rmax;
     private int[][] visited;
 
-    public void solve() throws IOException {
+    public static void main(String[] args) throws IOException {
+        TenKindsOfPeopleFileRead problem = new TenKindsOfPeopleFileRead();
 
+        ThreadLocalRandom rand = ThreadLocalRandom.current();
+        TenKindsGenerator generator = new TenKindsGenerator();
 
-        File file = new File("C:\\Users\\Hubii\\Documents\\Projects\\gs-accessing-data-mysql-master\\Kattis\\test.txt");
-        br = new BufferedReader(new FileReader(file));
-
-
-        getMap();
-
-        int n = 0;
-        try {
-            n = Integer.parseInt(br.readLine());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        for (int i = 0; i < n; i++) {
-            mark = 0;
-            getPositions();
-
-            if (checkSamePosition()) {
-                if (map[r1][c1] == 0) System.out.println("binary");
-                else System.out.println("decimal");
-            } else {
-                createVisited();
-                if (checkRoute()) {
-                    System.out.println("binary");
-                } else {
-                    createVisited();
-                    mark = 1;
-                    if (checkRoute()) System.out.println("decimal");
-                    else System.out.println("neither");
-                }
-            }
-        }
+        problem.solve();
     }
 
     private void createVisited() {
@@ -120,19 +92,41 @@ public class TenKindsOfPeopleFileRead {
         return r1 == r2 && c1 == c2;
     }
 
+    public void solve() throws IOException {
 
-    public static void main(String[] args) {
-        TenKindsOfPeopleFileRead problem = new TenKindsOfPeopleFileRead();
 
-        ThreadLocalRandom rand = ThreadLocalRandom.current();
-        TenKindsGenerator generator = new TenKindsGenerator();
-        for (int i = 0; i < 1000 ; i++) {
-            generator.generateTestData(rand.nextInt(1000) + 1, rand.nextInt(1000) + 1, rand.nextInt(1000) + 1);
-            try {
-                problem.solve();
-            } catch (IOException e) {
-                e.printStackTrace();
+        File file = new File("C:\\Users\\Hubii\\Documents\\Projects\\gs-accessing-data-mysql-master\\Kattis\\sample-00.in");
+        br = new BufferedReader(new FileReader(file));
+
+
+        getMap();
+
+        int n = 0;
+        try {
+            n = Integer.parseInt(br.readLine());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        for (int i = 0; i < n; i++) {
+            mark = 0;
+            getPositions();
+
+            if (checkSamePosition()) {
+                if (map[r1][c1] == 0) System.out.println("binary");
+                else System.out.println("decimal");
+            } else {
+                createVisited();
+                if (checkRoute()) {
+                    System.out.println("binary");
+                } else {
+                    createVisited();
+                    mark = 1;
+                    if (checkRoute()) System.out.println("decimal");
+                    else System.out.println("neither");
+                }
             }
         }
     }
+
 }

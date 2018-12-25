@@ -5,31 +5,29 @@ import java.util.StringTokenizer;
 public class TenKindsOfPeople {
 
 
+    private char[][] map;
+    private char mark;
+    private int r1, c1, r2, c2;
+    private int cmax, rmax;
+    private int[][] visited;
+
     private Scanner scanner;
     private StringTokenizer stringTokenizer;
-    private int[][] map;
-    private int mark;
-    private int r1;
-    private int c1;
-    private int r2;
-    private int c2;
-    private int cmax;
-    private int rmax;
-    private int[][] visited;
 
     public void solve() {
 
         scanner = new Scanner(System.in);
         getMap();
 
+        scanner.reset();
         int n = scanner.nextInt();
 
         for (int i = 0; i < n; i++) {
-            mark = 0;
+            mark = '0';
             getPositions();
 
             if (checkSamePosition()) {
-                if (map[r1][c1] == 0) System.out.println("binary");
+                if (map[r1][c1] == '0') System.out.println("binary");
                 else System.out.println("decimal");
             } else {
                 createVisited();
@@ -37,7 +35,7 @@ public class TenKindsOfPeople {
                     System.out.println("binary");
                 } else {
                     createVisited();
-                    mark = 1;
+                    mark = '1';
                     if (checkRoute()) System.out.println("decimal");
                     else System.out.println("neither");
                 }
@@ -74,36 +72,28 @@ public class TenKindsOfPeople {
 
 
     private void getPositions() {
+        scanner.reset();
         scanner = new Scanner(System.in);
 
-        String input = scanner.nextLine();
-
-        stringTokenizer = new StringTokenizer(input);
-
-        r1 = Integer.parseInt(stringTokenizer.nextToken()) - 1;
-        c1 = Integer.parseInt(stringTokenizer.nextToken()) - 1;
-        r2 = Integer.parseInt(stringTokenizer.nextToken()) - 1;
-        c2 = Integer.parseInt(stringTokenizer.nextToken()) - 1;
+        r1 = scanner.nextInt() - 1;
+        c1 = scanner.nextInt() - 1;
+        r2 = scanner.nextInt() - 1;
+        c2 = scanner.nextInt() - 1;
 
 
     }
 
     private void getMap() {
 
-        String input = scanner.nextLine();
 
-        stringTokenizer = new StringTokenizer(input);
+        rmax = scanner.nextInt();
+        cmax = scanner.nextInt();
 
-        rmax = Integer.parseInt(stringTokenizer.nextToken());
-        cmax = Integer.parseInt(stringTokenizer.nextToken());
 
-        map = new int[rmax][cmax];
+        map = new char[rmax][cmax];
 
         for (int i = 0; i < rmax; i++) {
-            input = scanner.nextLine();
-            for (int j = 0; j < cmax; j++) {
-                map[i][j] = Character.getNumericValue(input.charAt(j));
-            }
+            map[i] = scanner.next().toCharArray();
         }
 
     }
