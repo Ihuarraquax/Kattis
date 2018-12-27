@@ -13,12 +13,11 @@ public class Game2048 {
 
         move = scanner.nextInt();
 
-        buildHelpfulArraysForDirection(move);
-
+        solveByCreatingAuxiliaryArray(move);
 
     }
 
-    private void buildHelpfulArraysForDirection(int move) {
+    private void solveByCreatingAuxiliaryArray(int move) {
 
         switch (move) {
             case 0:
@@ -58,14 +57,18 @@ public class Game2048 {
                 for (int x = 0; x < 4; x++) {
 
                     helpfulArray = new int[4];
+                    int i = 0;
                     for (int y = 3; y >= 0; y--) {
-                        helpfulArray[y] = map[y][x];
+                        helpfulArray[i] = map[y][x];
+                        i++;
                     }
 
                     playOnArray(helpfulArray);
-
+                    i = 0;
                     for (int y = 3; y >= 0; y--) {
-                        map[y][x] = helpfulArray[y];
+
+                        map[y][x] = helpfulArray[i];
+                        i++;
                     }
 
                 }
@@ -74,14 +77,20 @@ public class Game2048 {
                 for (int x = 0; x < 4; x++) {
 
                     helpfulArray = new int[4];
+
+                    int i = 0;
                     for (int y = 3; y >= 0; y--) {
-                        helpfulArray[y] = map[x][y];
+
+                        helpfulArray[i] = map[x][y];
+                        i++;
                     }
 
                     playOnArray(helpfulArray);
-
+                    i = 0;
                     for (int y = 3; y >= 0; y--) {
-                        map[x][y] = helpfulArray[y];
+
+                        map[x][y] = helpfulArray[i];
+                        i++;
                     }
 
                 }
@@ -133,16 +142,19 @@ public class Game2048 {
 
     }
 
-
-    public static void main(String[] args) {
-        Game2048 problem = new Game2048();
-
-        problem.solve();
+    private static void writeMap(Game2048 problem) {
         for (int i = 0; i < 4; i++) {
             for (int j = 0; j < 4; j++) {
                 System.out.print(problem.map[j][i] + " ");
             }
             System.out.println();
         }
+    }
+
+    public static void main(String[] args) {
+        Game2048 problem = new Game2048();
+
+        problem.solve();
+        writeMap(problem);
     }
 }
