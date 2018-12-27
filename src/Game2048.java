@@ -10,11 +10,8 @@ public class Game2048 {
 
     public void solve() {
         generateField();
-
         move = scanner.nextInt();
-
         solveByCreatingAuxiliaryArray(move);
-
     }
 
     private void solveByCreatingAuxiliaryArray(int move) {

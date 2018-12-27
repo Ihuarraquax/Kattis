@@ -1,8 +1,7 @@
 import java.util.Arrays;
 import java.util.Scanner;
-import java.util.StringTokenizer;
 
-public class TenKindsOfPeople {
+public class OneZeroKindsOfPeople {
 
 
     private char[][] map;
@@ -10,9 +9,7 @@ public class TenKindsOfPeople {
     private int r1, c1, r2, c2;
     private int cmax, rmax;
     private int[][] visited;
-
     private Scanner scanner;
-    private StringTokenizer stringTokenizer;
 
     public void solve() {
 
@@ -67,9 +64,7 @@ public class TenKindsOfPeople {
 
         visited[r][c] = 1;
         return checkRouteREC(r + 1, c) || checkRouteREC(r - 1, c) || checkRouteREC(r, c + 1) || checkRouteREC(r, c - 1);
-
     }
-
 
     private void getPositions() {
         scanner.reset();
@@ -85,23 +80,18 @@ public class TenKindsOfPeople {
 
     private void getMap() {
 
-
         rmax = scanner.nextInt();
         cmax = scanner.nextInt();
-
 
         map = new char[rmax][cmax];
 
         for (int i = 0; i < rmax; i++) {
             map[i] = scanner.next().toCharArray();
         }
-
     }
 
-
     public static void main(String[] args) {
-        TenKindsOfPeople problem = new TenKindsOfPeople();
-
+        OneZeroKindsOfPeople problem = new OneZeroKindsOfPeople();
         problem.solve();
     }
 }
