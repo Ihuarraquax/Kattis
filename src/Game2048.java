@@ -60,10 +60,11 @@ public class Game2048 {
                     helpfulArray[next] = 0;
                 }
             }
-            moveAllWay(helpfulArray);
+
 
 
         }
+        moveAllWay(helpfulArray);
 
     }
 
