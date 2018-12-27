@@ -37,12 +37,55 @@ public class Game2048 {
                     }
 
                 }
-
-
                 break;
             case 1:
+                for (int x = 0; x < 4; x++) {
+
+                    helpfulArray = new int[4];
+                    for (int y = 0; y < 4; y++) {
+                        helpfulArray[y] = map[x][y];
+                    }
+
+                    playOnArray(helpfulArray);
+
+                    for (int y = 0; y < 4; y++) {
+                        map[x][y] = helpfulArray[y];
+                    }
+
+                }
+                break;
             case 2:
+                for (int x = 0; x < 4; x++) {
+
+                    helpfulArray = new int[4];
+                    for (int y = 3; y >= 0; y--) {
+                        helpfulArray[y] = map[y][x];
+                    }
+
+                    playOnArray(helpfulArray);
+
+                    for (int y = 3; y >= 0; y--) {
+                        map[y][x] = helpfulArray[y];
+                    }
+
+                }
+                break;
             case 3:
+                for (int x = 0; x < 4; x++) {
+
+                    helpfulArray = new int[4];
+                    for (int y = 3; y >= 0; y--) {
+                        helpfulArray[y] = map[x][y];
+                    }
+
+                    playOnArray(helpfulArray);
+
+                    for (int y = 3; y >= 0; y--) {
+                        map[x][y] = helpfulArray[y];
+                    }
+
+                }
+                break;
 
         }
     }
@@ -60,9 +103,6 @@ public class Game2048 {
                     helpfulArray[next] = 0;
                 }
             }
-
-
-
         }
         moveAllWay(helpfulArray);
 
@@ -78,7 +118,6 @@ public class Game2048 {
                 }
             }
         }
-
     }
 
 
